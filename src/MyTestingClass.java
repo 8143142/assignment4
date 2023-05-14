@@ -14,7 +14,9 @@ class MyTestingClass {
     public int getAge() {
         return age;
     }
-
+    /*
+    hashCode is a method generates a unique hash code for each instance
+    */
     public int hashCode() {
         int result = 17;
         result = 31 * result + name.hashCode();
