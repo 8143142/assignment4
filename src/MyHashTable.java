@@ -74,4 +74,13 @@ public class MyHashTable<K, V> {
         return size;
     }
 
+    public int getBucketSize(int index) {
+        int count = 0;
+        Node<K, V> node = buckets.get(index);
+        while (node != null) {
+            count++;
+            node = node.next;
+        }
+        return count;
+    }
 }
