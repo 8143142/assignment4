@@ -15,4 +15,45 @@ public class MyHashTable<K, V> {
             this.next = null;
         }
     }
+
+    public MyHashTable() {
+        this.size = 10; // default size
+        this.buckets = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            buckets.add(null);
+        }
+    }
+
+    public MyHashTable(int size) {
+        this.size = size;
+        this.buckets = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            buckets.add(null);
+        }
+    }
+
+    public void put(K key, V value) {
+        int index = getIndex(key);
+        Node<K, V> node = buckets.get(index);
+        if (node == null) {
+            buckets.set(index, new Node<>(key, value));
+        } else {
+            while (node.next != null) {
+                if (node.key.equals(key)) {
+                    node.value = value; // update existing key
+                    return;
+                }
+                node = node.next;
+            }
+            if (node.key.equals(key)) {
+                node.value = value; // update existing key
+            } else {
+                node.next = new Node<>(key, value);
+            }
+        }
+    }
+    private int getIndex(K key) {
+        int hashCode = key.hashCode();
+        return Math.abs(hashCode) % size;
+    }
 }
