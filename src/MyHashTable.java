@@ -69,4 +69,9 @@ public class MyHashTable<K, V> {
         int hashCode = key.hashCode();
         return Math.abs(hashCode) % size;
     }
+
+    public int getSize() {
+        return size;
+    }
+
 }
