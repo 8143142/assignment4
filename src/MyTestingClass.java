@@ -6,20 +6,4 @@ class MyTestingClass {
         this.name = name;
         this.age = age;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public int hashCode() {
-        // custom hashCode method
-        int result = 17;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + age;
-        return result;
-    }
 }
