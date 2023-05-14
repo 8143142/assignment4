@@ -15,7 +15,9 @@ public class MyHashTable<K, V> {
             this.next = null;
         }
     }
-
+    /*
+    MyHashTable() is constructor that creates a hashTable with default size 10
+    */
     public MyHashTable() {
         this.size = 10; // default size
         this.buckets = new ArrayList<>(size);
@@ -23,7 +25,9 @@ public class MyHashTable<K, V> {
             buckets.add(null);
         }
     }
-
+    /*
+    MyHashTable(int size) is constructor that creates a hashTable with specified size
+    */
     public MyHashTable(int size) {
         this.size = size;
         this.buckets = new ArrayList<>(size);
@@ -31,7 +35,9 @@ public class MyHashTable<K, V> {
             buckets.add(null);
         }
     }
-
+    /*
+    put(K key, V value) is method used to add elements to the hashTable
+    */
     public void put(K key, V value) {
         int index = getIndex(key);
         Node<K, V> node = buckets.get(index);
