@@ -83,4 +83,10 @@ public class MyHashTable<K, V> {
         }
         return count;
     }
+
+    public void printBucketSizes() {
+        for (int i = 0; i < size; i++) {
+            System.out.println("Bucket " + i + ": " + getBucketSize(i));
+        }
+    }
 }
