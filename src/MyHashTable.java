@@ -52,6 +52,19 @@ public class MyHashTable<K, V> {
             }
         }
     }
+
+    public V get(K key) {
+        int index = getIndex(key);
+        Node<K, V> node = buckets.get(index);
+        while (node != null) {
+            if (node.key.equals(key)) {
+                return node.value;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+
     private int getIndex(K key) {
         int hashCode = key.hashCode();
         return Math.abs(hashCode) % size;
