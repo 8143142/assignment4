@@ -5,10 +5,12 @@ public class MyHashTable<K, V> {
     private ArrayList<Node<K, V>> buckets;
 
     private static class Node<K, V> {
-        private final K key;
-        private V value;
+        private final K key; // a variable of type K representing the key of a key-value pair
+        private V value; // a variable of type V representing the value of a key-value pair
         private Node<K, V> next;
-
+        /*
+        Node is a private class representing a node in the hashTable
+         */
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
@@ -16,7 +18,7 @@ public class MyHashTable<K, V> {
         }
     }
     /*
-    MyHashTable() is constructor that creates a hashTable with default size 10
+    MyHashTable is constructor that creates a hashTable with default size 10
     */
     public MyHashTable() {
         this.size = 10; // default size
@@ -26,7 +28,7 @@ public class MyHashTable<K, V> {
         }
     }
     /*
-    MyHashTable(int size) is constructor that creates a hashTable with specified size
+    MyHashTable is constructor that creates a hashTable with specified size
     */
     public MyHashTable(int size) {
         this.size = size;
@@ -36,7 +38,7 @@ public class MyHashTable<K, V> {
         }
     }
     /*
-    put(K key, V value) is method used to add elements to the hashTable
+    put is method used to add elements to the hashTable
     */
     public void put(K key, V value) {
         int index = getIndex(key);
@@ -59,8 +61,8 @@ public class MyHashTable<K, V> {
         }
     }
     /*
-
-     */
+    get is method used to retrieve the value associated with a key in the hashTable
+    */
     public V get(K key) {
         int index = getIndex(key);
         Node<K, V> node = buckets.get(index);
@@ -72,7 +74,9 @@ public class MyHashTable<K, V> {
         }
         return null;
     }
-
+    /*
+    getIndex is a private method used to get the index of the bucket where a key-value pair should be stored
+    */
     private int getIndex(K key) {
         int hashCode = key.hashCode();
         return Math.abs(hashCode) % size;
@@ -81,7 +85,9 @@ public class MyHashTable<K, V> {
     public int getSize() {
         return size;
     }
-
+    /*
+    getBucketSize is method used to get the number of elements in a specific bucket
+    */
     public int getBucketSize(int index) {
         int count = 0;
         Node<K, V> node = buckets.get(index);
@@ -91,7 +97,9 @@ public class MyHashTable<K, V> {
         }
         return count;
     }
-
+    /*
+    printBucketSizes is method used to print the number of elements in each bucket
+    */
     public void printBucketSizes() {
         for (int i = 0; i < size; i++) {
             System.out.println("Bucket " + i + ": " + getBucketSize(i));
