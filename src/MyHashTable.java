@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class MyHashTable<K, V> {
-    private int size;
+    private static int size;
     private ArrayList<Node<K, V>> buckets;
 
     private static class Node<K, V> {
@@ -81,7 +81,6 @@ public class MyHashTable<K, V> {
         int hashCode = key.hashCode();
         return Math.abs(hashCode) % size;
     }
-
     public int getSize() {
         return size;
     }
@@ -104,5 +103,17 @@ public class MyHashTable<K, V> {
         for (int i = 0; i < size; i++) {
             System.out.println("Bucket " + i + ": " + getBucketSize(i));
         }
+    }
+    public boolean replace(K key, V oldValue, V newValue) {
+        int index = getIndex(key);
+        Node<K, V> node = buckets.get(index);
+        while (node != null) {
+            if (node.key.equals(key) && node.value.equals(oldValue)) {
+                node.value = newValue;
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
     }
 }
